@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Pay – Birthday Reading, 90 min</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#23201C;--paper:#EAE4D6;--rule:#A49C8E}
+*{box-sizing:border-box}
+html{background:#1b1820 url(../bg.webp) center/cover no-repeat fixed;min-height:100%}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:transparent;color:var(--ink);font-family:'Libre Caslon Text',Georgia,serif;font-size:14px;line-height:1.5;padding:16px}
+.sheet{background:var(--paper);width:min(460px,100%);padding:28px 32px 32px;box-shadow:0 1px 2px rgba(0,0,0,.25),3px 6px 14px rgba(0,0,0,.25)}
+.top{border-bottom:1px solid var(--ink);padding-bottom:10px;font-size:13px;font-weight:700;letter-spacing:.08em}
+h1{font-size:13px;letter-spacing:.04em;margin:24px 0 2px;text-transform:uppercase}
+.sub{font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 18px}
+.amt{font-size:30px;margin:0 0 20px}
+.cur{display:flex;gap:6px;margin:0 0 20px;font-size:11px;letter-spacing:.12em}
+.cur button{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:1px solid var(--rule);padding:6px 12px;cursor:pointer}
+.cur button[aria-pressed=true]{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+a.pay{display:block;text-align:center;background:var(--ink);color:var(--paper);text-decoration:none;padding:13px;font-size:12px;letter-spacing:.14em}
+.note{font-size:11px;letter-spacing:.04em;margin-top:18px;color:#4a443c}
+.note a{color:inherit}
+</style></head><body>
+<main class="sheet">
+<div class="top">PSYCHIC MAXIMUM</div>
+<h1>Birthday Reading</h1><p class="sub">90 min</p>
+<p class="amt" id="amt"></p>
+<a class="pay" id="pay" href="#">PAY NOW</a>
+<p class="note">Have a code? Enter it at checkout. Your session is confirmed once payment is received. Questions? <a href="mailto:kat@phase333.net">kat@phase333.net</a></p>
+</main>
+<script>
+(function(){
+  var D={USD:{sym:'US$',amt:155,url:'https://book.stripe.com/dRm28q7cE6eQ3id0WXaAw0X'}};
+  var US_PACIFIC = ['Pacific/Honolulu', 'Pacific/Johnston', 'Pacific/Midway', 'Pacific/Pago_Pago', 'Pacific/Guam', 'Pacific/Saipan', 'Pacific/Wake'];
+  var EU_EXTRA = ['Asia/Nicosia', 'Asia/Famagusta', 'Atlantic/Canary', 'Atlantic/Madeira', 'Atlantic/Azores', 'Atlantic/Faroe', 'Atlantic/Faeroe', 'Atlantic/Reykjavik'];
+  var NOT_APAC = ['Asia/Dubai', 'Asia/Riyadh', 'Asia/Qatar', 'Asia/Bahrain', 'Asia/Kuwait', 'Asia/Muscat', 'Asia/Aden', 'Asia/Jerusalem', 'Asia/Tel_Aviv', 'Asia/Gaza', 'Asia/Hebron', 'Asia/Beirut', 'Asia/Damascus', 'Asia/Amman', 'Asia/Baghdad', 'Asia/Tehran', 'Asia/Istanbul', 'Asia/Tbilisi', 'Asia/Yerevan', 'Asia/Baku'];
+  function region() {
+    var tz = '';
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+    if (tz.indexOf('Europe/') === 0 || EU_EXTRA.indexOf(tz) > -1) return 'EUR';
+    if (tz.indexOf('Australia/') === 0 || tz === 'Antarctica/McMurdo' || tz === 'Indian/Christmas' || tz === 'Indian/Cocos') return 'AUD';
+    if (tz.indexOf('Pacific/') === 0 && US_PACIFIC.indexOf(tz) === -1) return 'AUD';
+    if (tz.indexOf('Asia/') === 0 && NOT_APAC.indexOf(tz) === -1) return 'AUD';
+    return 'USD';
+  }
+  function set(c){
+    document.getElementById('amt').textContent=D[c].sym+D[c].amt;
+    document.getElementById('pay').href=D[c].url;
+  }
+  set('USD');
+})();
+</script></body></html>

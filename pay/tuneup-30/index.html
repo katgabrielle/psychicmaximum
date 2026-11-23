@@ -24,23 +24,11 @@ a.pay{display:block;text-align:center;background:var(--ink);color:var(--paper);t
 <h1>Astro Tune-up</h1><p class="sub">30 min</p>
 <p class="amt" id="amt"></p>
 <a class="pay" id="pay" href="#">PAY NOW</a>
-<p class="note">Have a code? Enter it at checkout. Your session is confirmed once payment is received. Questions? <a href="mailto:kat@phase333.net">kat@phase333.net</a></p>
+<p class="note">Thanks for booking, you'll receive confirmation in email. Questions? <a href="mailto:kat@phase333.net">kat@phase333.net</a></p>
 </main>
 <script>
 (function(){
   var D={USD:{sym:'US$',amt:65,url:'https://book.stripe.com/14AaEW40sdHi061211aAw0U'}};
-  var US_PACIFIC = ['Pacific/Honolulu', 'Pacific/Johnston', 'Pacific/Midway', 'Pacific/Pago_Pago', 'Pacific/Guam', 'Pacific/Saipan', 'Pacific/Wake'];
-  var EU_EXTRA = ['Asia/Nicosia', 'Asia/Famagusta', 'Atlantic/Canary', 'Atlantic/Madeira', 'Atlantic/Azores', 'Atlantic/Faroe', 'Atlantic/Faeroe', 'Atlantic/Reykjavik'];
-  var NOT_APAC = ['Asia/Dubai', 'Asia/Riyadh', 'Asia/Qatar', 'Asia/Bahrain', 'Asia/Kuwait', 'Asia/Muscat', 'Asia/Aden', 'Asia/Jerusalem', 'Asia/Tel_Aviv', 'Asia/Gaza', 'Asia/Hebron', 'Asia/Beirut', 'Asia/Damascus', 'Asia/Amman', 'Asia/Baghdad', 'Asia/Tehran', 'Asia/Istanbul', 'Asia/Tbilisi', 'Asia/Yerevan', 'Asia/Baku'];
-  function region() {
-    var tz = '';
-    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
-    if (tz.indexOf('Europe/') === 0 || EU_EXTRA.indexOf(tz) > -1) return 'EUR';
-    if (tz.indexOf('Australia/') === 0 || tz === 'Antarctica/McMurdo' || tz === 'Indian/Christmas' || tz === 'Indian/Cocos') return 'AUD';
-    if (tz.indexOf('Pacific/') === 0 && US_PACIFIC.indexOf(tz) === -1) return 'AUD';
-    if (tz.indexOf('Asia/') === 0 && NOT_APAC.indexOf(tz) === -1) return 'AUD';
-    return 'USD';
-  }
   function set(c){
     document.getElementById('amt').textContent=D[c].sym+D[c].amt;
     document.getElementById('pay').href=D[c].url;

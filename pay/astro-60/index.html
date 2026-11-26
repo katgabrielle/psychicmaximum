@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><title>Pay – Astro Session, 60 min</title>
+<meta name="robots" content="noindex,nofollow"><title>Pay – Astro Inquiry, 60 min</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#23201C;--paper:#EAE4D6;--rule:#A49C8E}
@@ -8,7 +8,7 @@
 html{background:#1b1820 url(../bg.webp) center/cover no-repeat fixed;min-height:100%}
 body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:transparent;color:var(--ink);font-family:'Libre Caslon Text',Georgia,serif;font-size:14px;line-height:1.5;padding:16px}
 .sheet{background:var(--paper);width:min(460px,100%);padding:28px 32px 32px;box-shadow:0 1px 2px rgba(0,0,0,.25),3px 6px 14px rgba(0,0,0,.25)}
-.top{border-bottom:1px solid var(--ink);padding-bottom:10px;font-size:13px;font-weight:700;letter-spacing:.08em}
+.top{border-bottom:1px solid var(--ink);padding-bottom:10px;font-size:14px;font-weight:400;letter-spacing:.02em}
 h1{font-size:13px;letter-spacing:.04em;margin:24px 0 2px;text-transform:uppercase}
 .sub{font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 18px}
 .amt{font-size:30px;margin:0 0 20px}
@@ -20,15 +20,15 @@ a.pay{display:block;text-align:center;background:var(--ink);color:var(--paper);t
 .note a{color:inherit}
 </style></head><body>
 <main class="sheet">
-<div class="top">PSYCHIC MAXIMUM</div>
-<h1>Astro Session</h1><p class="sub">60 min</p>
+<div class="top">To confirm your session, pay below.</div>
+<h1>Astro Inquiry</h1><p class="sub">60 min</p>
 <p class="amt" id="amt"></p>
-<a class="pay" id="pay" href="#">PAY NOW</a>
+<a class="pay" id="pay" href="#">BOOK NOW</a>
 <p class="note">Thanks for booking, you'll receive confirmation in email. Questions? <a href="mailto:kat@phase333.net">kat@phase333.net</a></p>
 </main>
 <script>
 (function(){
-  var D={USD:{sym:'US$',amt:105,url:'https://book.stripe.com/cNi14m68A6eQ4mheNNaAw0F'}};
+  var D={USD:{sym:'US$',amt:110,url:'https://book.stripe.com/eVq28q54w46I061499aAw19'}};
   function set(c){
     document.getElementById('amt').textContent=D[c].sym+D[c].amt;
     document.getElementById('pay').href=D[c].url;
